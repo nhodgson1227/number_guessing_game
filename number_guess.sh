@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PSQL="psql --USER_NAME=freecodecamp --dbname=players -t --no-align -c"
+PSQL="psql --username=freecodecamp --dbname=number_guess -t --no-align -c"
 NUMGUESS=0
 GUESS=0
 
@@ -11,21 +11,20 @@ let "SECRET_NUM %= 1000"
 # Get User's name
 read -p "Enter your username: " MYNAME
 # Check for user in database
-$USER_NAME=$($PSQL "SELECT user_name FROM players WHERE user_name = '$MYNAME'")
-
-  # If user does not exist
-  if [[ -z $USER_NAME ]]
-  then
-    # create a new user
-    INSERT_USER_RESULT=$($PSQL "INSERT INTO players(user_name) VALUES('$MYNAME')")
-    echo -e "\nWelcome, $MYNAME! It looks like this is your first time here."
-  else
-    # get games played
-    # CODE
-    # get best game
-    # CODE
-    echo -e "\nWelcome back, $USER_NAME! You have played <games_played> games, and your best game took <best_game> guesses."
-  fi
+USER_NAME=$($PSQL "SELECT user_name FROM players WHERE user_name = '$MYNAME'")
+# If user does not exist
+if [[ -z $USER_NAME ]]
+then
+  # create a new user
+  INSERT_USER_RESULT=$($PSQL "INSERT INTO players(user_name) VALUES('$MYNAME')")
+  echo -e "\nWelcome, $MYNAME! It looks like this is your first time here."
+else
+  # get games played
+  # CODE
+  # get best game
+  # CODE
+  echo -e "\nWelcome back, $USER_NAME! You have played <games_played> games, and your best game took <best_game> guesses."
+fi
 
   #### ------------------ Guess the Number ------------------ ####
 
