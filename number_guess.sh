@@ -8,8 +8,7 @@ GUESS=0
 SECRET_NUM=$RANDOM
 let "SECRET_NUM %= 1000"
 
-echo "$SECRET_NUM" #DEBUG
-
+#DEBUG echo "$SECRET_NUM" 
 # Get User's name
 echo -e "Enter your username:"
 read MYNAME
@@ -31,8 +30,8 @@ else
   GAMES_PLAYED=$($PSQL "SELECT games_played FROM players WHERE user_name = '$USER_NAME'")
   # get best game
   BEST_GAME=$($PSQL "SELECT best_game FROM players WHERE user_name = '$USER_NAME'")
-  echo -e "Games_Played: $GAMES_PLAYED , Best_Game: $BEST_GAME" >> number_guess.log
-  echo -e "Welcome back, $USER_NAME! You have played $GAMES_PLAYED games, and your best game took $BEST_GAME guesses."
+  echo -e "Games_Played: $GAMES_PLAYED, Best_Game: $BEST_GAME" >> number_guess.log
+  echo -e "Welcome back, $USER_NAME! You have played $GAMES_PLAYED games, and your best game took $BEST_GAME guesses.\n"
 fi
 
   #### ------------------ Guess the Number ------------------ ####

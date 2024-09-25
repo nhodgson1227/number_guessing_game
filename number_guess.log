@@ -1,0 +1,17 @@
+InsertUser: INSERT 0 1
+MYNAME: asdf USERNAME: asdf NumGuess: 4 BestGame: 0 
+
+InsertUser: INSERT 0 1
+MYNAME: lkjs USERNAME: lkjs NumGuess: 2 BestGame: 2 
+
+Games_Played: 8 , Best_Game: 2
+MYNAME: nate USERNAME: nate NumGuess: 1 BestGame: 1 
+
+Games_Played: 9 , Best_Game: 1
+Games_Played: 9 , Best_Game: 1
+Games_Played: 9 , Best_Game: 1
+MYNAME: nate USERNAME: nate NumGuess: 3 BestGame: 1 
+
+Games_Played: 1 , Best_Game: 0
+InsertUser: INSERT 0 1
+Games_Played: 1 , Best_Game: 11
