@@ -1,12 +1,13 @@
 #!/bin/bash
 
 PSQL="psql --username=freecodecamp --dbname=number_guess -t --no-align -c"
+MIN=1
+MAX=1000
 NUMGUESS=0
 GUESS=0
 
 # Generate Random Number
-SECRET_NUM=$RANDOM
-let "SECRET_NUM %= 1000"
+SECRET_NUM=$(( RANDOM % $MAX + $MIN ))
 
 #DEBUG echo "$SECRET_NUM" 
 # Get User's name
@@ -31,15 +32,14 @@ else
   # get best game
   BEST_GAME=$($PSQL "SELECT best_game FROM players WHERE user_name = '$USER_NAME'")
   echo -e "Games_Played: $GAMES_PLAYED, Best_Game: $BEST_GAME" >> number_guess.log
-  echo -e "Welcome back, $USER_NAME! You have played $GAMES_PLAYED games, and your best game took $BEST_GAME guesses.\n"
+  echo -e "Welcome back, $USER_NAME! You have played $GAMES_PLAYED games, and your best game took $BEST_GAME guesses."
 fi
 
   #### ------------------ Guess the Number ------------------ ####
-
+echo "Guess the secret number between $MIN and $MAX:"
 while [[ $GUESS -ne $SECRET_NUM ]]; 
 do
   # Read a new guess
-  echo "Guess the secret number between 1 and 1000:"
   read GUESS
   # Check if input was an integer
   while [[ $((GUESS)) != $GUESS ]]; 
@@ -75,7 +75,7 @@ then
   BEST_GAME=$NUMGUESS
 fi
 
-#echo -e "MYNAME: $MYNAME USERNAME: $USER_NAME NumGuess: $NUMGUESS BestGame: $BEST_GAME \n" >> number_guess.log
+echo -e "MYNAME: $MYNAME USERNAME: $USER_NAME NumGuess: $NUMGUESS BestGame: $BEST_GAME \n" >> number_guess.log
 
 echo "You guessed it in $NUMGUESS tries. The secret number was $SECRET_NUM. Nice job!"
 exit
