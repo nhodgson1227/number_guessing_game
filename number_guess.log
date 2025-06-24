@@ -15,3 +15,4 @@ MYNAME: nate USERNAME: nate NumGuess: 3 BestGame: 1
 Games_Played: 1 , Best_Game: 0
 InsertUser: INSERT 0 1
 Games_Played: 1 , Best_Game: 11
+Games_Played: 8, Best_Game: 2
